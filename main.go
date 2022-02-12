@@ -63,13 +63,7 @@ func table_make() error {
 }
 
 
-// func Model(q ) error {
-// 	ph := new(Phone)
-// 	log.Println(ph)
-// 	return nil
-// }
-
-func Controller(c echo.Context) error {
+func Model(c echo.Context) error {
 	message := "[Register Success!]"
 	db , err := db_connect()
 	if err != nil {
@@ -109,7 +103,12 @@ func Controller(c echo.Context) error {
 	// 	log.Println("[In insert_row() db.Create error] " + result.Error.Error())
 	// 	return result.Error
 	// }
-	log.Println(message)
+}
+
+func Controller(c echo.Context) error {
+	if err := Model(c); err {
+		return err
+	}
 	return nil
 }
 
