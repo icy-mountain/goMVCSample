@@ -1,3 +1,6 @@
+/*
+TODO:疎結合なデータベース構造への変更。
+*/
 package models
 
 import (
@@ -7,6 +10,7 @@ import (
 	"gorm.io/gorm"
 )
 
+// 仕様書ではIDについて言及がなかったが追加。
 type Phone struct {
 	gorm.Model
 	ID			uint		`json:"id" gorm:"primarykey not null autoIncrement"`

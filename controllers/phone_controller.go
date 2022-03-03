@@ -13,6 +13,10 @@ func NewPhoneController() *PhoneController {
 
 func (phc *PhoneController) PHCHandler(c echo.Context) error {
 	ph := new(models.Phone)
+	// Phoneの各メンバと、パラメータの型が等しいかどうかの判定のみ行う。
+	// usecase1: "...maker=123..." -> error
+	// usecase2: "...released=31012022" -> error
+	// usecase3: "...hogehoge=..." -> pass
 	err := echo.QueryParamsBinder(c).
 		String("maker", &ph.Maker).
 		String("machine", &ph.Machine).

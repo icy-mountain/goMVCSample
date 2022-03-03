@@ -1,3 +1,7 @@
+/*
+ROLE:URLルーティングとサーバー建てを行う。
+TODO:ルーティングを別ファイルで行う。複数の役割を一つのファイルで行うのは好ましくないため。
+*/
 package main
 
 import (
@@ -9,6 +13,7 @@ import (
 	"github.com/labstack/echo/v4"
 )
 
+// 「/」へGETが要求された時に動く。単なる動作確認用。別に消して良い
 func HandlerSample(c echo.Context) error {
 	return c.JSON(http.StatusOK, "hello!")
 }
