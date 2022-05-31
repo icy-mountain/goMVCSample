@@ -1,8 +1,8 @@
 package controllers
 
 import (
-	"icy-mountain/models"
 	"github.com/labstack/echo/v4"
+	"icy-mountain/models"
 )
 
 type PhoneController struct {}
@@ -14,13 +14,13 @@ func NewPhoneController() *PhoneController {
 func (phc *PhoneController) PHCHandler(c echo.Context) error {
 	ph := new(models.Phone)
 	// Phoneの各メンバと、パラメータの型が等しいかどうかの判定のみ行う。
-	// usecase1: "...maker=123..." -> error
-	// usecase2: "...released=31012022" -> error
-	// usecase3: "...hogehoge=..." -> pass
+	// use case1: "...maker=123..." -> error
+	// use case2: "...released=31012022" -> error
+	// use case3: "...foo=..." -> pass
 	err := echo.QueryParamsBinder(c).
 		String("maker", &ph.Maker).
 		String("machine", &ph.Machine).
-		String("os_version", &ph.OS_version).
+		String("os_version", &ph.OSVersion).
 		String("color", &ph.Color).
 		Time("released", &ph.Released, "2006-01-02").
 		Uint("storage", &ph.Storage).

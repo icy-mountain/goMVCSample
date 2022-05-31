@@ -1,22 +1,23 @@
+// Package models
 /*
 TODO:疎結合なデータベース構造への変更。
 */
 package models
 
 import (
-	"time"
 	"icy-mountain/database"
+	"time"
 
 	"gorm.io/gorm"
 )
 
-// 仕様書ではIDについて言及がなかったが追加。
+// Phone 仕様書ではIDについて言及がなかったが追加。
 type Phone struct {
 	gorm.Model
-	ID			uint		`json:"id" gorm:"primarykey not null autoIncrement"`
+	ID			uint		`json:"id" gorm:"primaryKey not null autoIncrement"`
 	Maker		string		`json:"maker" form:"maker" query:"maker"`
 	Machine		string		`json:"machine" form:"machine" query:"machine"`
-	OS_version	string		`json:"os_version" form:"os_version" query:"os_version"`
+	OSVersion	string		`json:"os_version" form:"os_version" query:"os_version"`
 	Color		string		`json:"color" form:"color" query:"color"`
 	Released	time.Time	`json:"released" form:"released" query:"released"`
 	Storage		uint		`json:"storage" form:"storage" query:"storage"`

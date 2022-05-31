@@ -5,15 +5,15 @@ TODO:ルーティングを別ファイルで行う。複数の役割を一つの
 package main
 
 import (
+	"github.com/labstack/echo/v4"
 	"net/http"
 
-	"icy-mountain/models"
 	"icy-mountain/controllers"
 	"icy-mountain/database"
-	"github.com/labstack/echo/v4"
+	"icy-mountain/models"
 )
 
-// 「/」へGETが要求された時に動く。単なる動作確認用。別に消して良い
+// HandlerSample 「/」へGETが要求された時に動く。単なる動作確認用。別に消して良い
 func HandlerSample(c echo.Context) error {
 	return c.JSON(http.StatusOK, "hello!")
 }

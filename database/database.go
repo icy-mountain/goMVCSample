@@ -1,4 +1,5 @@
-// USE: importしてdatabase.Init()した後に、hoge := database.Get()すれば使える。
+// Package database
+// USE: importしてdatabase.Init()した後に、foo := database.Get()すれば使える。
 package database
 
 import (
@@ -12,8 +13,7 @@ import (
 var db *gorm.DB
 var sqlDB *sql.DB
 
-// resetがTrueなら、既にデータベースに存在するテーブルを削除して
-// 新しいテーブルを作成する。
+// Init resetがTrueなら、既にデータベースに存在するテーブルを削除して新しいテーブルを作成する。
 func Init(reset bool, models ...interface{}) error {
 	dsn := "root:password@tcp(127.0.0.1:3306)/go_sample"
 	var err error
