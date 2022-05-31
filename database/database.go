@@ -28,7 +28,7 @@ func Init(reset bool, models ...interface{}) error {
 		return err
 	}
 	if reset {
-        db.Migrator().DropTable(models...)
+        err = db.Migrator().DropTable(models...)
     }
 	err = db.Migrator().CreateTable(models...)
 	if err != nil {
@@ -38,7 +38,10 @@ func Init(reset bool, models ...interface{}) error {
 }
 
 func Close() {
-	sqlDB.Close()
+	err := sqlDB.Close()
+	if err != nil {
+		panic(err)
+	}
 }
 
 func GetDB() *gorm.DB {
